@@ -1,0 +1,57 @@
+1. Membuat Database
+----------------------------------
+use tourdb
+
+
+2. Membuat Collection dan Memasukkan Data
+----------------------------------
+db.users.insertMany([
+  { nama: "John Doe", email: "john@doe.com", password: "secret" },
+  { nama: "Jane Doe", email: "jane@doe.com", password: "secret" }
+])
+
+db.categories.insertMany([
+  { name: "Traveler" },
+  { name: "Otomotif" }
+])
+
+db.news.insertMany([
+  {
+    title: "Wisata gunung agung",
+    content: "Gunung Agung adalah gunung tertinggi di pulau Bali dengan ketinggian 3.142 mdpl. Gunung ini terletak di kecamatan Rendang, Kabupaten Karangasem, Bali, Indonesia. Pura Besakih",
+    thumbnail: "img.jpg"
+  },
+  {
+    title: "Wisata Goa Jomblang",
+    content: "Goa Jomblang termasuk salah satu wisata ikonik di Jawa Tengah. Di wisata ini Kamu akan diajak turun ke perut bumi sedalam 80 meter. Turunnya pun terbilang menantang, pasalnya bukan turun dengan tangga melainkan teknik tali tunggal berbekal keamanan lengkap.",
+    thumbnail: "image.png"
+  },
+  {
+    title: "Wisata Borobudur",
+    content: "Kemegahan dan sejarah Candi Borobudur telah dikenal dunia sejak lama. UNESCO bahkan menetapkan Borobudur sebagai warisan dunia pada 1991. Kamu bisa mengunjunginya sebelum subuh untuk menyaksikan sisi lain keindahan Borobudur.",
+    thumbnail: "img.png"
+  },
+  {
+    title: "Mobil listrik Hyundai Ioniq 5.",
+    content: "Sukses dengan Ioniq dan Kona electric, Hyundai Indonesia juga akan terus memasarkan kendaraan BEV. Tahun depan yang dipersiapkan adalah Ioniq 5. Ini adalah model produksi dari mobil konsep Hyundai 45 yang sudah pernah ditampilkan secara global pada 2019.",
+    thumbnail: "gambar.png"
+  },
+  {
+    title: "Wuling Mini EV",
+    content: "Sempat mengemparkan pada saat GIIAS 2021, Wuling Motors resmi menghadirkan mobil listrik yang diproduksi di Indonesia pada tahun 2022. Mobil yang berdimensi kecil ini mempunyai panjang 2.917 mm, lebar 1.493 mm, tinggi 1.621 mm, dan wheelbase 1.940 mm.",
+    thumbnail: "gambar.jpg"
+  }
+])
+
+
+3. Mengambil Data dari Database
+----------------------------------
+db.users.find({}, { password: 0 })
+
+
+4. Mengubah Data dari Database
+----------------------------------
+db.news.updateOne(
+  { title: "Wisata Borobudur" },
+  { $set: { thumbnail: "image.jpg" } }
+)
